@@ -26,7 +26,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         }`}
       >
         <div className="p-4 flex items-center justify-between border-b border-gray-200">
-          <div className="text-xl font-bold text-brand" style={{ fontFamily: "serif" }}>Royal Spice</div>
+          <div className="text-xl font-bold text-brand" style={{ fontFamily: "serif" }}>King of Burger</div>
           <button onClick={onClose} className="p-2 -mr-2 text-gray-500 hover:text-black">
             <X className="w-6 h-6" />
           </button>
@@ -44,10 +44,6 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <Link href="/contact" onClick={onClose} className="flex items-center gap-4 px-6 py-3 text-gray-800 hover:bg-brand-light/30 transition-colors">
             <Phone className="w-5 h-5 text-brand" />
             <span className="font-medium">Contact Us</span>
-          </Link>
-          <Link href="/terms" onClick={onClose} className="flex items-center gap-4 px-6 py-3 text-gray-800 hover:bg-brand-light/30 transition-colors">
-            <FileText className="w-5 h-5 text-brand" />
-            <span className="font-medium">Terms and Conditions</span>
           </Link>
         </nav>
       </div>

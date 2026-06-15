@@ -6,12 +6,10 @@ import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
 import CategoryNav from "../components/CategoryNav";
 import MenuItem from "../components/MenuItem";
-import CategoryBottomSheet from "../components/CategoryBottomSheet";
 import { categories, menuItems } from "../data/menu";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(categories[0].name);
 
@@ -40,7 +38,6 @@ export default function Home() {
             setActiveCategory(category);
             setSearchQuery(""); // Clear search when a category is clicked
           }}
-          onViewMore={() => setIsBottomSheetOpen(true)}
         />
 
         <div className="px-4 mt-2 flex flex-col gap-4">
@@ -67,15 +64,6 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* Categories Bottom Sheet */}
-      <CategoryBottomSheet 
-        isOpen={isBottomSheetOpen}
-        onClose={() => setIsBottomSheetOpen(false)}
-        categories={categories}
-        activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
-      />
     </div>
   );
 }

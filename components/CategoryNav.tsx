@@ -7,10 +7,9 @@ interface CategoryNavProps {
   categories: Category[];
   activeCategory: string;
   onSelectCategory: (categoryName: string) => void;
-  onViewMore: () => void;
 }
 
-export default function CategoryNav({ categories, activeCategory, onSelectCategory, onViewMore }: CategoryNavProps) {
+export default function CategoryNav({ categories, activeCategory, onSelectCategory }: CategoryNavProps) {
   // Take first 8 categories for the horizontal scroll
   const visibleCategories = categories.slice(0, 8);
 
@@ -45,19 +44,6 @@ export default function CategoryNav({ categories, activeCategory, onSelectCatego
             </button>
           );
         })}
-        
-        {/* View More Button */}
-        <button
-          onClick={onViewMore}
-          className="flex flex-col items-center gap-2 shrink-0 group mr-4"
-        >
-          <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center transition-all group-hover:bg-gray-200 border-2 border-transparent">
-            <ChevronRight className="w-8 h-8 text-gray-500" />
-          </div>
-          <span className="text-xs font-semibold whitespace-nowrap text-gray-600">
-            View More
-          </span>
-        </button>
       </div>
     </div>
   );

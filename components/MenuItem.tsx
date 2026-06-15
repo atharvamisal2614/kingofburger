@@ -1,5 +1,4 @@
 import { MenuItem as MenuItemType } from "../data/menu";
-import { Crown } from "lucide-react";
 
 interface MenuItemProps {
   item: MenuItemType;
@@ -20,29 +19,7 @@ export default function MenuItem({ item }: MenuItemProps) {
             
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-sm">
-              {item.isChefSpecial && (
-                <div className="flex items-center gap-1 text-gold font-semibold text-xs">
-                  <Crown className="w-4 h-4 fill-gold text-gold" />
-                  <span>Chef&apos;s Special</span>
-                </div>
-              )}
-              
-              {item.isChefSpecial && item.spiceLevel && (
-                <span className="text-gray-300">•</span>
-              )}
-              
-              {item.spiceLevel && (
-                <div className={`flex items-center gap-1 font-semibold text-xs ${
-                  item.spiceLevel === "Spicy" ? "text-red-600" :
-                  item.spiceLevel === "Medium" ? "text-orange-500" :
-                  "text-green-600"
-                }`}>
-                  <span className="text-sm leading-none">
-                    {item.spiceLevel === "Spicy" ? "🌶️🌶️" : item.spiceLevel === "Medium" ? "🌶️" : "🌿"}
-                  </span>
-                  <span>{item.spiceLevel}</span>
-                </div>
-              )}
+              {/* Badges removed as per request */}
             </div>
           </div>
         </div>

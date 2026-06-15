@@ -1,5 +1,3 @@
-export type SpiceLevel = "Mild" | "Medium" | "Spicy" | null;
-
 export interface Category {
   id: string;
   name: string;
@@ -12,54 +10,37 @@ export interface MenuItem {
   price: number;
   category: string;
   isVeg: boolean;
-  isChefSpecial: boolean;
-  spiceLevel: SpiceLevel;
   isAvailable: boolean;
 }
 
 const categoryNames = [
-  "Starters", "Roti", "Main Course", "Rice", "Desserts", "Beverages", 
-  "Soups", "Salads", "Tandoori", "Pizza", "Pasta", "Burgers", 
-  "Chinese", "South Indian", "Mocktails", "Ice Creams", "Thalis"
+  "Burger", "Pizza", "Sandwich (Non Toast)", "Grilled Sandwich (Toast)", 
+  "French Fries", "Chaat", "Milkshake"
 ];
 
 export const categories: Category[] = categoryNames.map((name, index) => ({
   id: `cat_${index + 1}`,
   name,
-  image: `/images/categories/${name.toLowerCase().replace(/ /g, '-')}.png`,
+  image: `/images/categories/${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.png`,
 }));
 
 // Dictionary of realistic dish names per category
 const realisticDishes: Record<string, string[]> = {
-  "Starters": ["Paneer Tikka", "Veg Crispy", "Hara Bhara Kebab", "Chilli Paneer", "Corn Cheese Balls", "French Fries", "Spring Rolls", "Mushroom Tikka", "Gobi Manchurian", "Jalapeno Poppers"],
-  "Roti": ["Tandoori Roti", "Butter Naan", "Garlic Naan", "Laccha Paratha", "Missi Roti", "Roomali Roti", "Plain Naan", "Onion Kulcha", "Cheese Garlic Naan", "Tandoori Butter Roti"],
-  "Main Course": ["Paneer Butter Masala", "Veg Kadai", "Malai Kofta", "Palak Paneer", "Mix Veg", "Chana Masala", "Dal Makhani", "Paneer Tikka Masala", "Dum Aloo", "Veg Jalfrezi"],
-  "Rice": ["Veg Biryani", "Jeera Rice", "Steamed Rice", "Veg Pulao", "Peas Pulao", "Kashmiri Pulao", "Dal Khichdi", "Paneer Biryani", "Schezwan Fried Rice", "Veg Fried Rice"],
-  "Desserts": ["Gulab Jamun", "Rasmalai", "Gajar Ka Halwa", "Chocolate Brownie", "Vanilla Ice Cream", "Kesar Pista Kulfi", "Moong Dal Halwa", "Fruit Salad", "Cheesecake", "Tiramisu"],
-  "Beverages": ["Fresh Lime Soda", "Cold Coffee", "Mango Lassi", "Sweet Lassi", "Masala Chai", "Filter Coffee", "Virgin Mojito", "Blue Lagoon", "Iced Tea", "Buttermilk"],
-  "Soups": ["Tomato Soup", "Sweet Corn Soup", "Manchow Soup", "Hot & Sour Soup", "Clear Veg Soup", "Mushroom Soup", "Minestrone Soup", "Broccoli Almond Soup", "Lemon Coriander Soup", "Pumpkin Soup"],
-  "Salads": ["Green Salad", "Russian Salad", "Greek Salad", "Caesar Salad", "Macaroni Salad", "Kachumber Salad", "Sprout Salad", "Corn Salad", "Waldorf Salad", "Caprese Salad"],
-  "Tandoori": ["Tandoori Aloo", "Tandoori Mushroom", "Paneer Malai Tikka", "Seekh Kebab", "Tandoori Gobi", "Achari Paneer Tikka", "Peshawari Paneer", "Tandoori Baby Corn", "Hariyali Paneer Tikka", "Tandoori Platter"],
+  "Burger": ["Aloo Tikki Burger", "Veggie Burger", "Paneer Burger", "Cheese Burger", "Mushroom Burger", "Double Cheese Burger", "Crispy Veg Burger", "BBQ Veg Burger", "Jumbo Veg Burger", "Spicy Paneer Burger"],
   "Pizza": ["Margherita Pizza", "Farmhouse Pizza", "Veggie Paradise", "Peppy Paneer", "Mexican Green Wave", "Cheese n Corn", "Deluxe Veggie", "Veg Extravaganza", "Tandoori Paneer Pizza", "Four Cheese Pizza"],
-  "Pasta": ["Penne Arrabbiata", "Alfredo Pasta", "Pesto Pasta", "Mac n Cheese", "Pink Sauce Pasta", "Spaghetti Aglio e Olio", "Veg Lasagna", "Ravioli", "Mushroom Pasta", "Baked Pasta"],
-  "Burgers": ["Veggie Burger", "Aloo Tikki Burger", "Paneer Burger", "Cheese Burger", "Mushroom Burger", "Spicy Bean Burger", "Double Cheese Burger", "Crispy Veg Burger", "BBQ Veg Burger", "Jumbo Veg Burger"],
-  "Sandwiches": ["Veg Club Sandwich", "Grilled Cheese Sandwich", "Mumbai Toastie", "Paneer Tikka Sandwich", "Coleslaw Sandwich", "Spinach Corn Sandwich", "Chutney Sandwich", "Mushroom Sandwich", "Veg Mayo Sandwich", "Bombay Sandwich"],
-  "Chinese": ["Veg Hakka Noodles", "Veg Fried Rice", "Gobi Manchurian", "Chilli Mushroom", "Veg Spring Roll", "Crispy Corn", "Chop Suey", "Veg Sweet & Sour", "Dragon Potato", "Schezwan Noodles"],
-  "South Indian": ["Idli Sambar", "Masala Dosa", "Plain Dosa", "Medu Vada", "Uttapam", "Rava Dosa", "Mysore Masala Dosa", "Upma", "Lemon Rice", "Curd Rice"],
-  "North Indian": ["Chole Bhature", "Rajma Chawal", "Amritsari Kulcha", "Aloo Paratha", "Paneer Bhurji", "Dal Tadka", "Kadhi Pakora", "Baingan Bharta", "Bhindi Masala", "Aloo Gobi"],
-  "Mocktails": ["Virgin Pina Colada", "Fruit Punch", "Shirley Temple", "Green Apple Soda", "Watermelon Mojito", "Strawberry Margarita", "Peach Iced Tea", "Kiwi Cooler", "Mango Delight", "Sunset Glory"],
-  "Ice Creams": ["Vanilla", "Chocolate", "Strawberry", "Butterscotch", "Mango", "Tutti Frutti", "Black Currant", "Pista", "Coffee", "Mint Chocochip"],
-  "Shakes": ["Oreo Shake", "Kitkat Shake", "Mango Shake", "Strawberry Shake", "Chocolate Shake", "Vanilla Shake", "Banana Shake", "Brownie Shake", "Cold Coffee with Ice Cream", "Ferrero Rocher Shake"],
-  "Juices": ["Orange Juice", "Apple Juice", "Watermelon Juice", "Pineapple Juice", "Mosambi Juice", "Mix Fruit Juice", "Carrot Juice", "Beetroot Juice", "Pomegranate Juice", "Grape Juice"],
-  "Chaats": ["Pani Puri", "Bhel Puri", "Sev Puri", "Dahi Puri", "Aloo Tikki Chaat", "Papdi Chaat", "Raj Kachori", "Samosa Chaat", "Basket Chaat", "Palak Patta Chaat"]
+  "Sandwich (Non Toast)": ["Veg Club Sandwich", "Coleslaw Sandwich", "Spinach Corn Sandwich", "Chutney Sandwich", "Veg Mayo Sandwich", "Bombay Sandwich", "Paneer Sandwich", "Cucumber Sandwich", "Cheese Sandwich", "Tomato Cheese Sandwich"],
+  "Grilled Sandwich (Toast)": ["Grilled Cheese Sandwich", "Mumbai Toastie", "Paneer Tikka Sandwich", "Mushroom Sandwich", "Grilled Veg Sandwich", "Paneer Bhurji Sandwich", "Corn Cheese Grill", "Veg Masala Grill", "Chilli Cheese Toast", "Pesto Grill Sandwich"],
+  "French Fries": ["Classic Salted Fries", "Peri Peri Fries", "Cheese Fries", "Cheesy Jalapeno Fries", "Loaded Fries", "Tandoori Fries", "Pizza Fries", "BBQ Fries", "Garlic Herb Fries", "Sweet Chili Fries"],
+  "Chaat": ["Pani Puri", "Bhel Puri", "Sev Puri", "Dahi Puri", "Aloo Tikki Chaat", "Papdi Chaat", "Raj Kachori", "Samosa Chaat", "Basket Chaat", "Palak Patta Chaat"],
+  "Milkshake": ["Oreo Shake", "Kitkat Shake", "Mango Shake", "Strawberry Shake", "Chocolate Shake", "Vanilla Shake", "Banana Shake", "Brownie Shake", "Cold Coffee with Ice Cream", "Ferrero Rocher Shake"]
 };
 
 // Helper to generate generic authentic-sounding names if not explicitly defined
-const prefixes = ["Special", "Classic", "Spicy", "Crispy", "Tandoori", "Masala", "Butter", "Garlic", "Cheesy", "Royal"];
+const prefixes = ["Special", "Classic", "Crispy", "Tandoori", "Masala", "Butter", "Garlic", "Cheesy", "Royal"];
 const suffixes = ["Delight", "Supreme", "Bites", "Treat", "Special", "Bowl", "Platter", "Magic", "Twist", "Fusion"];
 
 export const menuItems: MenuItem[] = categories.flatMap((cat) => {
-  const specificDishes = realisticDishes[cat.name];
+  const specificDishes = realisticDishes[cat.name] || [];
   
   return Array.from({ length: 10 }).map((_, idx) => {
     // Determine the name: Use predefined if available, else generate a generic realistic name
@@ -72,15 +53,12 @@ export const menuItems: MenuItem[] = categories.flatMap((cat) => {
       // If no specific dish, just make a nice sounding one based on the category name
       dishName = `${prefix} ${cat.name.replace(/s$/, '')} ${suffix}`;
     }
-
-    const isSpecial = Math.random() > 0.8;
-    const spiceLevels: SpiceLevel[] = ["Mild", "Medium", "Spicy", null];
-    const spice = spiceLevels[Math.floor(Math.random() * spiceLevels.length)];
     
     // Assign realistic prices based on category
-    let basePrice = 200;
-    if (cat.name === "Roti" || cat.name === "Beverages" || cat.name === "Soups" || cat.name === "Desserts") basePrice = 80;
-    else if (cat.name === "Main Course" || cat.name === "Pizza" || cat.name === "Sizzlers") basePrice = 250;
+    let basePrice = 150;
+    if (cat.name === "Chaat" || cat.name === "French Fries") basePrice = 80;
+    else if (cat.name === "Pizza") basePrice = 250;
+    else if (cat.name === "Burger" || cat.name === "Milkshake") basePrice = 120;
     
     const price = Math.floor(Math.random() * 5 + (basePrice / 20)) * 20; // Round to nearest 20
 
@@ -90,8 +68,6 @@ export const menuItems: MenuItem[] = categories.flatMap((cat) => {
       price: price,
       category: cat.name,
       isVeg: true, 
-      isChefSpecial: isSpecial,
-      spiceLevel: spice,
       isAvailable: Math.random() > 0.1, 
     };
   });
