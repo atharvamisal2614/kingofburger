@@ -32,7 +32,7 @@ export default function RootLayout({
           {children}
           <footer className="w-full py-4 text-center mt-auto">
             <p className="text-xs text-gray-500">
-              Designed and developed by <a href="https://codefixerz.com" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">Codefixerz</a>
+              Designed and Developed by <a href="https://codefixerz.com" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">Codefixerz</a>
             </p>
           </footer>
         </main>

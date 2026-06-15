@@ -15,7 +15,7 @@ export default function MenuItem({ item }: MenuItemProps) {
           </div>
           
           <div className="flex flex-col">
-            <h3 className="font-bold text-gray-900 text-lg">{item.name}</h3>
+            <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
             
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-sm">
