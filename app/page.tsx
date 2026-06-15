@@ -42,14 +42,14 @@ export default function Home() {
 
         <div className="px-4 mt-2 flex flex-col gap-4">
           {/* Section Header */}
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="w-8 h-px bg-gold"></div>
-            <div className="w-1.5 h-1.5 rotate-45 border border-gold"></div>
-            <h2 className="text-brand font-bold tracking-widest text-lg uppercase">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 px-2">
+            <div className="w-6 sm:w-8 h-px bg-gold shrink-0"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-gold shrink-0"></div>
+            <h2 className="text-brand font-bold tracking-wider text-base sm:text-lg uppercase text-center break-words leading-tight">
               {searchQuery ? "Search Results" : activeCategory}
             </h2>
-            <div className="w-1.5 h-1.5 rotate-45 border border-gold"></div>
-            <div className="w-8 h-px bg-gold"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-gold shrink-0"></div>
+            <div className="w-6 sm:w-8 h-px bg-gold shrink-0"></div>
           </div>
 
           {/* Menu Items List */}

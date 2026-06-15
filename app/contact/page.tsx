@@ -23,8 +23,7 @@ export default function ContactPage() {
         {/* Intro Section */}
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "serif" }}>We'd love to hear from you</h2>
-          <p className="text-gray-500 text-sm">Whether you have a question about our menu, reservations, or anything else, our team is ready to answer all your questions.</p>
-        </div>
+                  </div>
 
         {/* Contact Info Cards */}
         <div className="flex flex-col gap-4">
@@ -73,12 +72,12 @@ export default function ContactPage() {
             <div className="flex flex-col">
               <h3 className="font-bold text-gray-900 text-lg">Hours</h3>
               <div className="flex justify-between text-sm mt-2 text-gray-700 w-full">
-                <span>Mon - Fri</span>
-                <span className="font-semibold text-gray-900">10:00 AM - 11:00 PM</span>
+                <span>Mon - Fri : </span>
+                <span className="font-semibold text-gray-900"> 10:00 AM - 11:00 PM</span>
               </div>
               <div className="flex justify-between text-sm mt-1 text-gray-700 w-full">
-                <span>Sat - Sun</span>
-                <span className="font-semibold text-gray-900">09:00 AM - 11:30 PM</span>
+                <span>Sat - Sun : </span>
+                <span className="font-semibold text-gray-900"> 09:00 AM - 11:30 PM</span>
               </div>
             </div>
           </div>
