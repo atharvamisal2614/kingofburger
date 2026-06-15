@@ -26,8 +26,19 @@ export default function MenuItem({ item }: MenuItemProps) {
         
         {/* Price and Availability */}
         <div className="flex flex-col items-end gap-1 shrink-0">
-          <div className="text-brand font-bold text-lg">₹{item.price}</div>
-          <div className={`text-xs font-semibold ${item.isAvailable ? "text-veg" : "text-gray-400"}`}>
+          {item.variants ? (
+            <div className="flex flex-col items-end gap-1">
+              {item.variants.map((v, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm">
+                  <span className="text-gray-500 font-medium">{v.name}:</span>
+                  <span className="text-brand font-bold">₹{v.price}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-brand font-bold text-lg">₹{item.price}</div>
+          )}
+          <div className={`text-xs font-semibold mt-1 ${item.isAvailable ? "text-veg" : "text-gray-400"}`}>
             {item.isAvailable ? "Available" : "Sold Out"}
           </div>
         </div>

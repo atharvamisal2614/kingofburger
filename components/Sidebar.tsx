@@ -37,7 +37,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <Info className="w-5 h-5 text-brand" />
             <span className="font-medium">About Restaurant</span>
           </Link>
-          <a href="https://google.com" target="_blank" rel="noreferrer" onClick={onClose} className="flex items-center gap-4 px-6 py-3 text-gray-800 hover:bg-brand-light/30 transition-colors">
+          <a href="https://share.google/iLhnQiKndyNz5rrpT" target="_blank" rel="noreferrer" onClick={onClose} className="flex items-center gap-4 px-6 py-3 text-gray-800 hover:bg-brand-light/30 transition-colors">
             <Star className="w-5 h-5 text-brand" />
             <span className="font-medium">Reviews</span>
           </a>
@@ -46,6 +46,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <span className="font-medium">Contact Us</span>
           </Link>
         </nav>
+        
+        <div className="p-4 mt-auto border-t border-gray-200">
+          <p className="text-xs text-center text-gray-500">
+            Designed and developed by <a href="https://codefixerz.com" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline font-semibold">Codefixerz</a>
+          </p>
+        </div>
       </div>
     </>
   );

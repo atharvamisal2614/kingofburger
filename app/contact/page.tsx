@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
+import { ArrowLeft, Phone, MapPin, Clock, User } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -30,24 +30,22 @@ export default function ContactPage() {
         <div className="flex flex-col gap-4">
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
             <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <Phone className="w-6 h-6 text-brand" />
+              <User className="w-6 h-6 text-brand" />
             </div>
             <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Call Us</h3>
-              <p className="text-gray-500 text-sm mt-1 mb-2">We are available from 10 AM to 11 PM.</p>
-              <a href="tel:+919876543210" className="text-brand font-semibold">+91 98765 43210</a>
-              <a href="tel:+911234567890" className="text-brand font-semibold">+91 12345 67890</a>
+              <h3 className="font-bold text-gray-900 text-lg">Owner</h3>
+              <p className="text-gray-900 font-semibold mt-1 mb-2">Pankaj Satish Rathod</p>
             </div>
           </div>
 
           <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
             <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <Mail className="w-6 h-6 text-brand" />
+              <Phone className="w-6 h-6 text-brand" />
             </div>
             <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Email Us</h3>
-              <p className="text-gray-500 text-sm mt-1 mb-2">Drop us a line anytime.</p>
-              <a href="mailto:info@royalspice.com" className="text-brand font-semibold">info@royalspice.com</a>
+              <h3 className="font-bold text-gray-900 text-lg">Call Us</h3>
+              <p className="text-gray-500 text-sm mt-1 mb-2">We are available to take your orders.</p>
+              <a href="tel:+919890957617" className="text-brand font-semibold">+91 98909 57617</a>
             </div>
           </div>
 
@@ -58,10 +56,11 @@ export default function ContactPage() {
             <div className="flex flex-col">
               <h3 className="font-bold text-gray-900 text-lg">Visit Us</h3>
               <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                123 Food Street, Culinary District,<br />
-                Flavor Town, 400001
+                King of Burger,<br />
+                Near inspire Computers, Kapad Bazar,<br />
+                telikhunt, Ahilyanagar, 414001
               </p>
-              <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="text-brand font-semibold mt-2 text-sm inline-flex items-center gap-1">
+              <a href="https://maps.google.com/?q=King+of+Burger,+Near+inspire+Computers,+Kapad+Bazar,+telikhunt,+Ahilyanagar,+414001" target="_blank" rel="noreferrer" className="text-brand font-semibold mt-2 text-sm inline-flex items-center gap-1">
                 Get Directions <ArrowLeft className="w-4 h-4 rotate-135" />
               </a>
             </div>

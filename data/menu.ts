@@ -4,18 +4,24 @@ export interface Category {
   image: string; // Placeholder for category image path
 }
 
+export interface MenuVariant {
+  name: string;
+  price: number;
+}
+
 export interface MenuItem {
   id: string;
   name: string;
-  price: number;
+  price?: number;
+  variants?: MenuVariant[];
   category: string;
   isVeg: boolean;
   isAvailable: boolean;
 }
 
 const categoryNames = [
-  "Burger", "Pizza", "Sandwich (Non Toast)", "Grilled Sandwich (Toast)", 
-  "French Fries", "Chaat", "Milkshake"
+  "Burger", "Pizza", "Sandwich", "Grilled Sandwich", 
+  "French Fries", "Chaat", "Milkshake","Bread Pizza"
 ];
 
 export const categories: Category[] = categoryNames.map((name, index) => ({
@@ -25,50 +31,91 @@ export const categories: Category[] = categoryNames.map((name, index) => ({
 }));
 
 // Dictionary of realistic dish names per category
-const realisticDishes: Record<string, string[]> = {
-  "Burger": ["Aloo Tikki Burger", "Veggie Burger", "Paneer Burger", "Cheese Burger", "Mushroom Burger", "Double Cheese Burger", "Crispy Veg Burger", "BBQ Veg Burger", "Jumbo Veg Burger", "Spicy Paneer Burger"],
-  "Pizza": ["Margherita Pizza", "Farmhouse Pizza", "Veggie Paradise", "Peppy Paneer", "Mexican Green Wave", "Cheese n Corn", "Deluxe Veggie", "Veg Extravaganza", "Tandoori Paneer Pizza", "Four Cheese Pizza"],
-  "Sandwich (Non Toast)": ["Veg Club Sandwich", "Coleslaw Sandwich", "Spinach Corn Sandwich", "Chutney Sandwich", "Veg Mayo Sandwich", "Bombay Sandwich", "Paneer Sandwich", "Cucumber Sandwich", "Cheese Sandwich", "Tomato Cheese Sandwich"],
-  "Grilled Sandwich (Toast)": ["Grilled Cheese Sandwich", "Mumbai Toastie", "Paneer Tikka Sandwich", "Mushroom Sandwich", "Grilled Veg Sandwich", "Paneer Bhurji Sandwich", "Corn Cheese Grill", "Veg Masala Grill", "Chilli Cheese Toast", "Pesto Grill Sandwich"],
-  "French Fries": ["Classic Salted Fries", "Peri Peri Fries", "Cheese Fries", "Cheesy Jalapeno Fries", "Loaded Fries", "Tandoori Fries", "Pizza Fries", "BBQ Fries", "Garlic Herb Fries", "Sweet Chili Fries"],
-  "Chaat": ["Pani Puri", "Bhel Puri", "Sev Puri", "Dahi Puri", "Aloo Tikki Chaat", "Papdi Chaat", "Raj Kachori", "Samosa Chaat", "Basket Chaat", "Palak Patta Chaat"],
-  "Milkshake": ["Oreo Shake", "Kitkat Shake", "Mango Shake", "Strawberry Shake", "Chocolate Shake", "Vanilla Shake", "Banana Shake", "Brownie Shake", "Cold Coffee with Ice Cream", "Ferrero Rocher Shake"]
+const exactDishes: Record<string, {name: string, price?: number, variants?: MenuVariant[]}[]> = {
+  "Burger": [
+    { name: "Veg Aloo Tikki Burger", price: 60 },
+    { name: "Veg Aloo Tikki Extra Mayo Burger Burger", price: 70 },
+    { name: "Veg Aloo Tikki Schezwan Burger", price: 70 },
+    { name: "Veg Aloo Tikki Cheese Burger", price: 80 },
+    { name: "Paneer Tikki Burger", price: 90 },
+    { name: "Veg Aloo Tikki Schezwan Burger", price: 90 },
+    { name: "Paneer Tikki Cheese Burger", price: 110 },
+  ],
+  "Pizza": [
+    { name: "Corn Cheese Pizza", variants: [{name: "6 inch", price: 120}, {name: "8 inch", price: 150}] },
+    { name: "Paneer Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
+    { name: "Veg Exotic Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
+    { name: "Veg Tandoori Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
+    { name: "Onion Capsicum Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
+    { name: "Plain Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
+    { name: "Veg B.B.Q. Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
+    { name: "Super Cheese Bust Pizza", variants: [{name: "6 inch", price: 170}, {name: "8 inch", price: 200}] },
+
+  ],
+  "Sandwich": [
+    { name: "Veg Sandwich", price: 40 },
+    { name: "Chocolate Sandwich", price: 60 },
+    { name: "Veg Cheese Sandwich", price: 70 },
+    { name: "Plain Cheese Sandwich", price: 70 },
+    { name: "Chocolate Cheese Sandwich", price: 90 },
+  ],
+  "Grilled Sandwich": [
+    { name: "Veg Grilled Sandwich", price: 70 },
+    { name: "Veg Schezwan Grilled Sandwich", price: 80 },
+    { name: "Chocolate Grilled Sandwich", price: 80 },
+    { name: "Veg Cheese Grilled Sandwich", price: 100 },
+    { name: "Plain Cheese Grilled Sandwich", price: 100 },
+  { name: "Chocolate Cheese Grilled Sandwich", price: 110 },
+    { name: "Veg Paneer Cheese Grilled Sandwich", price: 130 },
+    { name: "Veg Pizza Cheese Grilled Sandwich", price: 130 },
+  ],
+  "French Fries": [
+    { name: "Salted Fries", price: 80 },
+    { name: "Masala Fries", price: 90 },
+    { name: "Peri Peri Fries", price: 90 },
+    { name: "Cheese Fries", price: 120 },
+    { name: "Peri Peri Cheese Fries", price: 90 },
+  ],
+  "Chaat": [
+    { name: "Pani Puri", price: 20 },
+    { name: "Sev Puri", price: 30 },
+      { name: "Masala Puri", price: 30 },
+      { name: "Ragda Kachori", price: 30 },
+    { name: "Malai Dahi Puri", price: 40 },
+    { name: "Malai Dahi Ragda Kachori", price: 40 },
+    { name: "Oli Bhel", price: 40 },
+    { name: "Sukhi Bhel", price: 40 },
+    { name: "Kachori Bhel", price: 60 },
+    { name: "Oli Cheese Bhel", price: 70 },
+    
+  ],
+  "Milkshake": [
+      { name: "Cold Coffee", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+          { name: "Mango Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+{ name: "Strawberry Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+    { name: "Chocolate Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+    { name: "Oreo Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+    { name: "Butterscotch Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+  ],
+    "Bread Pizza": [
+    { name: "Bread Pizza", price: 20 },
+    { name: "Corn Bread Pizza", price: 30 }
+  ]
+ 
 };
 
-// Helper to generate generic authentic-sounding names if not explicitly defined
-const prefixes = ["Special", "Classic", "Crispy", "Tandoori", "Masala", "Butter", "Garlic", "Cheesy", "Royal"];
-const suffixes = ["Delight", "Supreme", "Bites", "Treat", "Special", "Bowl", "Platter", "Magic", "Twist", "Fusion"];
-
 export const menuItems: MenuItem[] = categories.flatMap((cat) => {
-  const specificDishes = realisticDishes[cat.name] || [];
+  const specificDishes = exactDishes[cat.name] || [];
   
-  return Array.from({ length: 10 }).map((_, idx) => {
-    // Determine the name: Use predefined if available, else generate a generic realistic name
-    let dishName = "";
-    if (specificDishes && specificDishes[idx]) {
-      dishName = specificDishes[idx];
-    } else {
-      const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-      const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-      // If no specific dish, just make a nice sounding one based on the category name
-      dishName = `${prefix} ${cat.name.replace(/s$/, '')} ${suffix}`;
-    }
-    
-    // Assign realistic prices based on category
-    let basePrice = 150;
-    if (cat.name === "Chaat" || cat.name === "French Fries") basePrice = 80;
-    else if (cat.name === "Pizza") basePrice = 250;
-    else if (cat.name === "Burger" || cat.name === "Milkshake") basePrice = 120;
-    
-    const price = Math.floor(Math.random() * 5 + (basePrice / 20)) * 20; // Round to nearest 20
-
+  return specificDishes.map((dish, idx) => {
     return {
       id: `${cat.id}_item_${idx + 1}`,
-      name: dishName,
-      price: price,
+      name: dish.name,
+      price: dish.price,
+      variants: dish.variants,
       category: cat.name,
       isVeg: true, 
-      isAvailable: Math.random() > 0.1, 
+      isAvailable: true, 
     };
   });
 });

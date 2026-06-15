@@ -13,15 +13,15 @@ export default function AboutPage() {
         <h1 className="text-xl font-bold ml-2 text-brand" style={{ fontFamily: "serif" }}>About Us</h1>
       </header>
       <main className="p-6 flex-1 text-gray-800 leading-relaxed">
-        <h2 className="text-2xl font-bold mb-4 text-gray-900">Royal Spice</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">King of Burger</h2>
         <p className="mb-4">
-          Welcome to Royal Spice, your ultimate destination for pure vegetarian culinary delights. We take pride in serving authentic, flavorful, and high-quality dishes prepared with the freshest ingredients.
+          Hi, I am Pankaj,
         </p>
         <p className="mb-4">
-          Our chefs are dedicated to bringing you the best dining experience, blending traditional recipes with a modern touch.
+          I had a strong interest in the restaurant business from a young age. At that time, I used to watch the TV show Shark Tank, which inspired me to start my own food business and sell through online platforms like Zomato and Swiggy. Motivated by this idea, I launched my business on May 12, 2021, and began serving customers through these platforms.
         </p>
-        <p>
-          Thank you for choosing Royal Spice. We hope you enjoy your meal!
+        <p className="mb-4">
+          I have a God-gifted talent for cooking and a natural sense of taste, which helps me create delicious and high-quality food. My passion for food and dedication to customer satisfaction have been key factors in my journey as a restaurant entrepreneur.
         </p>
       </main>
     </div>
