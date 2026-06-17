@@ -25,36 +25,38 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "serif" }}>We'd love to hear from you</h2>
                   </div>
 
-        {/* Contact Info Cards */}
-        <div className="flex flex-col gap-4">
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <User className="w-6 h-6 text-brand" />
+        {/* Contact Info flat list */}
+        <div className="flex flex-col gap-6 w-full">
+          {/* Owner */}
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+              <User className="w-5 h-5 text-brand" />
             </div>
-            <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Owner</h3>
-              <p className="text-gray-900 font-semibold mt-1 mb-2">Pankaj Satish Rathod</p>
-            </div>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <Phone className="w-6 h-6 text-brand" />
-            </div>
-            <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Call Us</h3>
-              <p className="text-gray-500 text-sm mt-1 mb-2">We are available to take your orders.</p>
-              <a href="tel:+919890957617" className="text-brand font-semibold">+91 98909 57617</a>
+            <div className="flex flex-col border-b border-gray-200/60 pb-5 w-full">
+              <h3 className="text-gray-500 text-sm font-medium">Owner</h3>
+              <p className="text-gray-900 font-bold text-lg mt-0.5">Pankaj Satish Rathod</p>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <MapPin className="w-6 h-6 text-brand" />
+          {/* Phone */}
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+              <Phone className="w-5 h-5 text-brand" />
             </div>
-            <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Visit Us</h3>
-              <p className="text-gray-500 text-sm mt-1 leading-relaxed">
+            <div className="flex flex-col border-b border-gray-200/60 pb-5 w-full">
+              <h3 className="text-gray-500 text-sm font-medium">Call Us</h3>
+              <a href="tel:+919890957617" className="text-brand font-bold text-lg mt-0.5">+91 98909 57617</a>
+            </div>
+          </div>
+
+          {/* Address */}
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+              <MapPin className="w-5 h-5 text-brand" />
+            </div>
+            <div className="flex flex-col border-b border-gray-200/60 pb-5 w-full">
+              <h3 className="text-gray-500 text-sm font-medium">Visit Us</h3>
+              <p className="text-gray-900 font-semibold mt-0.5 leading-relaxed">
                 King of Burger,<br />
                 Near inspire Computers, Kapad Bazar,<br />
                 telikhunt, Ahilyanagar, 414001
@@ -65,20 +67,15 @@ export default function ContactPage() {
             </div>
           </div>
           
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gold/10 flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
-              <Clock className="w-6 h-6 text-brand" />
+          {/* Hours */}
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+              <Clock className="w-5 h-5 text-brand" />
             </div>
-            <div className="flex flex-col">
-              <h3 className="font-bold text-gray-900 text-lg">Hours</h3>
-              <div className="flex justify-between text-sm mt-2 text-gray-700 w-full">
-                <span>Mon - Fri : </span>
-                <span className="font-semibold text-gray-900"> 10:00 AM - 11:00 PM</span>
-              </div>
-              <div className="flex justify-between text-sm mt-1 text-gray-700 w-full">
-                <span>Sat - Sun : </span>
-                <span className="font-semibold text-gray-900"> 09:00 AM - 11:30 PM</span>
-              </div>
+            <div className="flex flex-col pb-5 w-full">
+              <h3 className="text-gray-500 text-sm font-medium">Hours</h3>
+              <p className="text-gray-900 font-bold text-lg mt-0.5">09:00 AM - 11:00 PM</p>
+              <p className="text-gray-500 text-sm mt-1">Open all 7 days</p>
             </div>
           </div>
         </div>

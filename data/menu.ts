@@ -34,6 +34,7 @@ export const categories: Category[] = categoryNames.map((name, index) => ({
 const exactDishes: Record<string, {name: string, price?: number, variants?: MenuVariant[]}[]> = {
   "Burger": [
     { name: "Veg Aloo Tikki Burger", price: 60 },
+    { name: "Peri Peri Burger", price: 70 },
     { name: "Veg Aloo Tikki Extra Mayo Burger", price: 70 },
     { name: "Veg Aloo Tikki Schezwan Burger", price: 70 },
     { name: "Veg Aloo Tikki Cheese Burger", price: 80 },
