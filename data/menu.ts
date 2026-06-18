@@ -38,6 +38,7 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Veg Aloo Tikki Extra Mayo Burger", price: 70 },
     { name: "Veg Aloo Tikki Schezwan Burger", price: 70 },
     { name: "Veg Aloo Tikki Cheese Burger", price: 80 },
+        { name: "Peri Peri Cheese Burger", price: 90 },
     { name: "Paneer Tikki Burger", price: 90 },
     { name: "Veg Aloo Tikki Schezwan Burger", price: 90 },
     { name: "Paneer Tikki Cheese Burger", price: 110 },
@@ -46,7 +47,11 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Corn Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Veg Exotic Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Veg Tandoori Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
-    { name: "Onion Capsicum Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Onion Capcicum Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+
+     { name: "Onion Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+{ name: "Capcicum Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+
     { name: "Plain Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Paneer Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
     { name: "Veg B.B.Q. Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
