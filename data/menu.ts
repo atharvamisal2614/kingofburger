@@ -43,12 +43,12 @@ const exactDishes: Record<string, {name: string, price?: number, variants?: Menu
     { name: "Paneer Tikki Cheese Burger", price: 110 },
   ],
   "Pizza": [
-    { name: "Corn Cheese Pizza", variants: [{name: "6 inch", price: 120}, {name: "8 inch", price: 150}] },
-    { name: "Paneer Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
+    { name: "Corn Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
     { name: "Veg Exotic Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
     { name: "Veg Tandoori Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
     { name: "Onion Capsicum Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
     { name: "Plain Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
+    { name: "Paneer Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
     { name: "Veg B.B.Q. Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
     { name: "Super Cheese Bust Pizza", variants: [{name: "6 inch", price: 170}, {name: "8 inch", price: 200}] },
 
@@ -82,11 +82,8 @@ const exactDishes: Record<string, {name: string, price?: number, variants?: Menu
     { name: "Sev Puri", price: 30 },
       { name: "Masala Puri", price: 30 },
       { name: "Ragda Kachori", price: 30 },
-    { name: "Malai Dahi Puri", price: 40 },
-    { name: "Malai Dahi Ragda Kachori", price: 40 },
     { name: "Oli Bhel", price: 40 },
     { name: "Sukhi Bhel", price: 40 },
-    { name: "Kachori Bhel", price: 60 },
     { name: "Oli Cheese Bhel", price: 70 },
     
   ],
