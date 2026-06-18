@@ -20,8 +20,8 @@ export interface MenuItem {
 }
 
 const categoryNames = [
-  "Burger", "Pizza", "Sandwich", "Grilled Sandwich", 
-  "French Fries", "Chaat", "Milkshake","Bread Pizza"
+  "Burger", "Pizza", "Sandwich", "Grilled Sandwich",
+  "French Fries", "Chaat", "Milkshake", "Bread Pizza"
 ];
 
 export const categories: Category[] = categoryNames.map((name, index) => ({
@@ -31,7 +31,7 @@ export const categories: Category[] = categoryNames.map((name, index) => ({
 }));
 
 // Dictionary of realistic dish names per category
-const exactDishes: Record<string, {name: string, price?: number, variants?: MenuVariant[]}[]> = {
+const exactDishes: Record<string, { name: string, price?: number, variants?: MenuVariant[] }[]> = {
   "Burger": [
     { name: "Veg Aloo Tikki Burger", price: 60 },
     { name: "Peri Peri Burger", price: 70 },
@@ -43,14 +43,14 @@ const exactDishes: Record<string, {name: string, price?: number, variants?: Menu
     { name: "Paneer Tikki Cheese Burger", price: 110 },
   ],
   "Pizza": [
-    { name: "Corn Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
-    { name: "Veg Exotic Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
-    { name: "Veg Tandoori Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
-    { name: "Onion Capsicum Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
-    { name: "Plain Cheese Pizza", variants: [{name: "6 inch", price: 130}, {name: "8 inch", price: 160}] },
-    { name: "Paneer Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
-    { name: "Veg B.B.Q. Cheese Pizza", variants: [{name: "6 inch", price: 140}, {name: "8 inch", price: 170}] },
-    { name: "Super Cheese Bust Pizza", variants: [{name: "6 inch", price: 170}, {name: "8 inch", price: 200}] },
+    { name: "Corn Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Veg Exotic Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Veg Tandoori Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Onion Capsicum Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Plain Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Paneer Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
+    { name: "Veg B.B.Q. Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
+    { name: "Super Cheese Bust Pizza", variants: [{ name: "6 inch", price: 170 }, { name: "8 inch", price: 200 }] },
 
   ],
   "Sandwich": [
@@ -66,7 +66,7 @@ const exactDishes: Record<string, {name: string, price?: number, variants?: Menu
     { name: "Chocolate Grilled Sandwich", price: 80 },
     { name: "Veg Cheese Grilled Sandwich", price: 100 },
     { name: "Plain Cheese Grilled Sandwich", price: 100 },
-  { name: "Chocolate Cheese Grilled Sandwich", price: 110 },
+    { name: "Chocolate Cheese Grilled Sandwich", price: 110 },
     { name: "Veg Paneer Cheese Grilled Sandwich", price: 130 },
     { name: "Veg Pizza Cheese Grilled Sandwich", price: 130 },
   ],
@@ -80,31 +80,31 @@ const exactDishes: Record<string, {name: string, price?: number, variants?: Menu
   "Chaat": [
     { name: "Pani Puri", price: 20 },
     { name: "Sev Puri", price: 30 },
-      { name: "Masala Puri", price: 30 },
-      { name: "Ragda Kachori", price: 30 },
+    { name: "Masala Puri", price: 30 },
+    { name: "Ragda Kachori", price: 30 },
     { name: "Oli Bhel", price: 40 },
     { name: "Sukhi Bhel", price: 40 },
     { name: "Oli Cheese Bhel", price: 70 },
-    
+
   ],
   "Milkshake": [
-      { name: "Cold Coffee", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
-          { name: "Mango Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
-{ name: "Strawberry Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
-    { name: "Chocolate Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
-    { name: "Oreo Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
-    { name: "Butterscotch Shake", variants: [{name: "Regular", price: 80}, {name: "With Ice Cream", price: 100}] },
+    { name: "Cold Coffee", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Mango Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Strawberry Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Chocolate Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Oreo Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Butterscotch Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
   ],
-    "Bread Pizza": [
+  "Bread Pizza": [
     { name: "Bread Pizza", price: 20 },
     { name: "Corn Bread Pizza", price: 30 }
   ]
- 
+
 };
 
 export const menuItems: MenuItem[] = categories.flatMap((cat) => {
   const specificDishes = exactDishes[cat.name] || [];
-  
+
   return specificDishes.map((dish, idx) => {
     return {
       id: `${cat.id}_item_${idx + 1}`,
@@ -112,8 +112,8 @@ export const menuItems: MenuItem[] = categories.flatMap((cat) => {
       price: dish.price,
       variants: dish.variants,
       category: cat.name,
-      isVeg: true, 
-      isAvailable: true, 
+      isVeg: true,
+      isAvailable: true,
     };
   });
 });
