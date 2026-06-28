@@ -22,21 +22,7 @@ export default function MenuItem({ item }: MenuItemProps) {
           </div>
           
           <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
-              {item.description && (
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="text-gold hover:text-brand transition-colors duration-200 focus:outline-none select-none p-0.5"
-                  aria-expanded={isOpen}
-                  aria-label="Toggle details"
-                >
-                  <ChevronDown
-                    className={`w-4 h-4 transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-              )}
-            </div>
+            <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
             
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-sm">
@@ -59,8 +45,19 @@ export default function MenuItem({ item }: MenuItemProps) {
           ) : (
             <div className="text-brand font-bold text-lg">₹{item.price ?? 0}</div>
           )}
-          <div className={`text-xs font-semibold mt-1 ${item.isAvailable ? "text-veg" : "text-gray-400"}`}>
-            {item.isAvailable ? "Available" : "Sold Out"}
+          <div className="flex items-center gap-2 mt-1">
+            {item.description && (
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-[11px] font-semibold text-gold hover:opacity-80 transition-opacity duration-200 flex items-center gap-0.5 focus:outline-none select-none"
+                aria-expanded={isOpen}
+              >
+                <span>About Dish</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+            )}
           </div>
         </div>
       </div>
