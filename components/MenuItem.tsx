@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { MenuItem as MenuItemType } from "../data/menu";
 
 interface MenuItemProps {
@@ -5,6 +9,9 @@ interface MenuItemProps {
 }
 
 export default function MenuItem({ item }: MenuItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const variants = item.variants;
+
   return (
     <div className="bg-bg-cream border border-gold/30 rounded-xl p-4 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] flex flex-col gap-2 relative">
       <div className="flex justify-between items-start">
@@ -15,7 +22,21 @@ export default function MenuItem({ item }: MenuItemProps) {
           </div>
           
           <div className="flex flex-col">
-            <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
+            <div className="flex items-center gap-1.5">
+              <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
+              {item.description && (
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="text-gold hover:text-brand transition-colors duration-200 focus:outline-none select-none p-0.5"
+                  aria-expanded={isOpen}
+                  aria-label="Toggle details"
+                >
+                  <ChevronDown
+                    className={`w-4 h-4 transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+              )}
+            </div>
             
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-sm">
@@ -26,9 +47,9 @@ export default function MenuItem({ item }: MenuItemProps) {
         
         {/* Price and Availability */}
         <div className="flex flex-col items-end gap-1 shrink-0">
-          {item.variants ? (
+          {variants && variants.length > 0 ? (
             <div className="flex flex-col items-end gap-1">
-              {item.variants.map((v, i) => (
+              {variants.map((v, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm">
                   <span className="text-gray-500 font-medium">{v.name}:</span>
                   <span className="text-brand font-bold">₹{v.price}</span>
@@ -36,13 +57,26 @@ export default function MenuItem({ item }: MenuItemProps) {
               ))}
             </div>
           ) : (
-            <div className="text-brand font-bold text-lg">₹{item.price}</div>
+            <div className="text-brand font-bold text-lg">₹{item.price ?? 0}</div>
           )}
           <div className={`text-xs font-semibold mt-1 ${item.isAvailable ? "text-veg" : "text-gray-400"}`}>
             {item.isAvailable ? "Available" : "Sold Out"}
           </div>
         </div>
       </div>
+
+      {/* Description dropdown - full width at the bottom, minimalist style */}
+      {item.description && (
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            isOpen ? "max-h-24 mt-1 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          }`}
+        >
+          <p className="text-xs text-gray-800 bg-gold/5 px-2.5 py-1.5 rounded-lg border border-gold/10 leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
