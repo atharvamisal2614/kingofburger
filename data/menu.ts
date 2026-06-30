@@ -39,7 +39,7 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Veg Aloo Tikki Extra Mayo Burger", price: 70 },
     { name: "Veg Aloo Tikki Schezwan Burger", price: 70 },
     { name: "Veg Aloo Tikki Cheese Burger", price: 80 },
-        { name: "Peri Peri Cheese Burger", price: 90 },
+    { name: "Peri Peri Cheese Burger", price: 90 },
     { name: "Paneer Tikki Burger", price: 90 },
     { name: "Veg Aloo Tikki Schezwan Burger", price: 90 },
     { name: "Paneer Tikki Cheese Burger", price: 110 },
@@ -94,12 +94,12 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
 
   ],
   "Milkshake": [
-    { name: "Cold Coffee", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
-    { name: "Mango Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
-    { name: "Strawberry Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
-    { name: "Chocolate Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
-    { name: "Oreo Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
-    { name: "Butterscotch Shake", variants: [{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Cold Coffee", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Mango Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Strawberry Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Chocolate Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Oreo Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Butterscotch Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
   ],
   "Bread Pizza": [
     { name: "Bread Pizza", price: 20 },
