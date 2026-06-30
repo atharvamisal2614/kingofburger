@@ -49,12 +49,16 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Veg Exotic Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Veg Tandoori Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Onion Capcicum Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Onion Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Capcicum Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
 
-     { name: "Onion Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
-{ name: "Capcicum Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
+    { name: "Mushroom Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
 
     { name: "Plain Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Paneer Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
+
+    { name: "Paneer Capcicum Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
+
     { name: "Veg B.B.Q. Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
     { name: "Super Cheese Bust Pizza", variants: [{ name: "6 inch", price: 170 }, { name: "8 inch", price: 200 }] },
 
@@ -130,6 +134,9 @@ const dishDescriptions: Record<string, string> = {
   "Paneer Cheese Pizza": "Topped with soft marinated paneer cubes, fresh capsicum, onions, and premium cheese.",
   "Veg B.B.Q. Cheese Pizza": "Drizzled with sweet and smoky BBQ sauce, topped with fresh veggies and gooey cheese.",
   "Super Cheese Bust Pizza": "Ultimate cheese explosion with a liquid cheese base and a double layer of melted mozzarella.",
+  "Mushroom Cheese Pizza" : "Loaded with juicy mushrooms and melted cheese on a crispy, freshly baked crust.",
+  "Paneer Capcicum Cheese Pizza" : "A delicious combination of soft paneer, crunchy capsicum, and gooey melted cheese on a crispy crust.",
+
 
   // Sandwiches
   "Veg Sandwich": "Fresh bread slices stuffed with sliced cucumbers, tomatoes, potatoes, and savory green chutney.",
