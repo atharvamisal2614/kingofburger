@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { X } from "lucide-react";
 import { MenuItem as MenuItemType } from "../data/menu";
 
 interface MenuItemProps {
@@ -9,71 +9,99 @@ interface MenuItemProps {
 }
 
 export default function MenuItem({ item }: MenuItemProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isEnlarged, setIsEnlarged] = useState(false);
   const variants = item.variants;
 
   return (
-    <div className="bg-bg-cream border border-gold/30 rounded-xl p-4 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] flex flex-col gap-2 relative">
-      <div className="flex justify-between items-start">
-        <div className="flex gap-3">
-          {/* Veg/Non-Veg Indicator */}
-          <div className={`mt-1 w-4 h-4 shrink-0 flex items-center justify-center border-2 rounded-sm ${item.isVeg ? "border-veg" : "border-nonveg"}`}>
-            <div className={`w-2 h-2 rounded-full ${item.isVeg ? "bg-veg" : "bg-nonveg"}`}></div>
-          </div>
-          
-          <div className="flex flex-col">
-            <h3 className="font-semibold text-gray-900 text-md">{item.name}</h3>
-            
-            {/* Badges row */}
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-sm">
-              {/* Badges removed as per request */}
-            </div>
-          </div>
+    <>
+      <div className="bg-bg-cream border border-gold/30 rounded-xl p-3 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] flex gap-3 items-center relative">
+        {/* Left side: Image */}
+        <div 
+          onClick={() => setIsEnlarged(true)}
+          className="w-[90px] h-[90px] sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative cursor-pointer hover:opacity-95 transition-opacity group"
+        >
+          <img
+            src={item.image}
+            alt={item.name}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={(e) => {
+              // Neat fallback svg placeholder if image has not been uploaded yet
+              e.currentTarget.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F4EFE6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23C0A060'>No Image</text></svg>";
+            }}
+          />
         </div>
-        
-        {/* Price and Availability */}
-        <div className="flex flex-col items-end gap-1 shrink-0">
-          {variants && variants.length > 0 ? (
-            <div className="flex flex-col items-end gap-1">
-              {variants.map((v, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm">
-                  <span className="text-gray-500 font-medium">{v.name}:</span>
-                  <span className="text-brand font-bold">₹{v.price}</span>
-                </div>
-              ))}
+
+        {/* Right side: Content & Price */}
+        <div className="flex-1 flex justify-between items-center gap-4">
+          {/* Text Content */}
+          <div className="flex-1 flex flex-col pt-1.5">
+            <div className="flex gap-2 items-start">
+              <div className="flex flex-col">
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base leading-tight">{item.name}</h3>
+              </div>
             </div>
-          ) : (
-            <div className="text-brand font-bold text-lg">₹{item.price ?? 0}</div>
-          )}
-          <div className="flex items-center gap-2 mt-1">
+
+            {/* Description - always visible, gray text */}
             {item.description && (
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-[11px] font-semibold text-gold hover:opacity-80 transition-opacity duration-200 flex items-center gap-0.5 focus:outline-none select-none"
-                aria-expanded={isOpen}
-              >
-                <span>About Dish</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                />
-              </button>
+              <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
+                {item.description}
+              </p>
+            )}
+          </div>
+
+          {/* Price - Centered vertically on the right */}
+          <div className="flex-shrink-0 flex items-center justify-center min-w-[60px] text-right">
+            {variants && variants.length > 0 ? (
+              <div className="flex flex-col items-end gap-1">
+                {variants.map((v, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs sm:text-sm">
+                    <span className="text-gray-500 font-medium">{v.name}:</span>
+                    <span className="text-brand font-bold">₹{v.price}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-brand font-bold text-base sm:text-lg">₹{item.price ?? 0}</div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Description dropdown - full width at the bottom, minimalist style */}
-      {item.description && (
-        <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-24 mt-1 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          }`}
+      {/* Lightbox / Enlarged Image Modal */}
+      {isEnlarged && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setIsEnlarged(false)}
         >
-          <p className="text-xs text-gray-800 bg-gold/5 px-2.5 py-1.5 rounded-lg border border-gold/10 leading-relaxed">
-            {item.description}
-          </p>
+          {/* Close button at the top-right corner of screen */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsEnlarged(false);
+            }}
+            className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors p-2 bg-black/50 hover:bg-black/70 rounded-full focus:outline-none"
+            aria-label="Close image"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Image container */}
+          <div 
+            className="relative max-w-full max-h-[85vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/10"
+              onError={(e) => {
+                e.currentTarget.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F4EFE6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23C0A060'>No Image</text></svg>";
+              }}
+            />
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
