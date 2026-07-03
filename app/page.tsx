@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
@@ -12,6 +12,14 @@ export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(categories[0].name);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Filter items based on search or category
   const displayedItems = menuItems.filter((item) => {
@@ -20,6 +28,21 @@ export default function Home() {
     }
     return item.category === activeCategory;
   });
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-bg-cream animate-splash overflow-hidden">
+        <div className="flex flex-col items-center text-center px-4">
+          {/* Brand Heading split vertically - Perfectly Responsive */}
+          <div className="flex flex-col items-center select-none font-serif text-brand font-bold tracking-wider leading-none">
+            <span className="text-5xl sm:text-6xl md:text-7xl uppercase mb-1 sm:mb-2 animate-fade-up-1">King</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lowercase italic text-gold mb-1 sm:mb-2 animate-fade-up-2">of</span>
+            <span className="text-5xl sm:text-6xl md:text-7xl uppercase animate-fade-up-3">Burger</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col flex-1 w-full relative">

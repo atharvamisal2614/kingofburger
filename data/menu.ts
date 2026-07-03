@@ -53,8 +53,7 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Onion Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Capcicum Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
 
-    { name: "Mushroom Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
-
+    
     { name: "Plain Cheese Pizza", variants: [{ name: "6 inch", price: 130 }, { name: "8 inch", price: 160 }] },
     { name: "Paneer Cheese Pizza", variants: [{ name: "6 inch", price: 140 }, { name: "8 inch", price: 170 }] },
 
@@ -65,11 +64,11 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
 
   ],
   "Sandwich": [
-    { name: "Veg Sandwich", price: 40 },
-    { name: "Chocolate Sandwich", price: 60 },
-    { name: "Veg Cheese Sandwich", price: 70 },
-    { name: "Plain Cheese Sandwich", price: 70 },
-    { name: "Chocolate Cheese Sandwich", price: 90 },
+    { name: "Veg Sandwich (Non Toast)", price: 40 },
+    { name: "Chocolate Sandwich (Non Toast)", price: 60 },
+    { name: "Veg Cheese Sandwich (Non Toast)", price: 70 },
+    { name: "Plain Cheese Sandwich (Non Toast)", price: 70 },
+    { name: "Chocolate Cheese Sandwich (Non Toast)", price: 90 },
   ],
   "Grilled Sandwich": [
     { name: "Veg Grilled Sandwich", price: 70 },
@@ -135,7 +134,7 @@ const dishDescriptions: Record<string, string> = {
   "Paneer Cheese Pizza": "Topped with soft marinated paneer cubes.",
   "Veg B.B.Q. Cheese Pizza": "Drizzled with sweet and smoky BBQ sauce.",
   "Super Cheese Bust Pizza": "Ultimate cheese explosion with liquid cheese base.",
-  "Mushroom Cheese Pizza" : "Loaded with juicy mushrooms and melted cheese.",
+
   "Paneer Capcicum Cheese Pizza" : "Delicious combo of paneer and crunchy capsicum.",
 
   // Sandwiches
