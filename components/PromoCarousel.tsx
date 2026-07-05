@@ -110,7 +110,6 @@ export default function PromoCarousel() {
           height: "175px",
           /* Solid dark background — visible on the left where image is transparent */
           background: "#111111",
-          boxShadow: "0 8px 30px rgba(0,0,0,0.2)",
         }}
         onMouseEnter={stopTimer}
         onMouseLeave={startTimer}
