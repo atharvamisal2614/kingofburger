@@ -9,52 +9,130 @@ export default function MenuItem({ item }: MenuItemProps) {
   const variants = item.variants;
 
   return (
-    <div className="bg-bg-cream border border-gold/30 rounded-xl p-3 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] flex gap-3 items-center relative">
-      {/* Left side: Image */}
-      <div className="w-[90px] h-[90px] sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
+    <div
+      style={{
+        background: "#FFF8F3",
+        borderRadius: "20px",
+        padding: "16px",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
+        display: "flex",
+        gap: "14px",
+        alignItems: "center",
+        transition: "box-shadow 0.2s ease",
+      }}
+    >
+      {/* Left: Dish Image */}
+      <div
+        style={{
+          width: "90px",
+          height: "90px",
+          borderRadius: "14px",
+          overflow: "hidden",
+          background: "#F0EBE1",
+          flexShrink: 0,
+        }}
+      >
         <img
           src={item.image}
           alt={item.name}
           loading="lazy"
-          className="w-full h-full object-cover"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
           onError={(e) => {
-            // Neat fallback svg placeholder if image has not been uploaded yet
-            e.currentTarget.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F4EFE6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23C0A060'>No Image</text></svg>";
+            e.currentTarget.src =
+              "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F0EBE1'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23D4AF37'>No Image</text></svg>";
           }}
         />
       </div>
 
-      {/* Right side: Content & Price */}
-      <div className="flex-1 flex justify-between items-center gap-4">
-        {/* Text Content */}
-        <div className="flex-1 flex flex-col pt-1.5">
-          <div className="flex gap-2 items-start">
-            <div className="flex flex-col">
-              <h3 className="font-semibold text-gray-900 text-sm sm:text-base leading-tight">{item.name}</h3>
-            </div>
-          </div>
+      {/* Right: Name, description, price */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          minHeight: "90px",
+          paddingTop: "2px",
+          paddingBottom: "2px",
+        }}
+      >
+        {/* Name */}
+        <h3
+          style={{
+            fontFamily: "var(--font-poppins), sans-serif",
+            fontWeight: 600,
+            fontSize: "14.5px",
+            color: "#1E1E1E",
+            lineHeight: 1.3,
+            margin: 0,
+          }}
+        >
+          {item.name}
+        </h3>
 
-          {/* Description - always visible, gray text */}
-          {item.description && (
-            <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
-              {item.description}
-            </p>
-          )}
-        </div>
+        {/* Description */}
+        {item.description && (
+          <p
+            style={{
+              fontFamily: "var(--font-poppins), sans-serif",
+              fontWeight: 400,
+              fontSize: "11.5px",
+              color: "#687280",
+              lineHeight: 1.5,
+              margin: "6px 0 0",
+            }}
+          >
+            {item.description}
+          </p>
+        )}
 
-        {/* Price - Centered vertically on the right */}
-        <div className="flex-shrink-0 flex items-center justify-center min-w-[60px] text-right">
+        {/* Price */}
+        <div style={{ marginTop: "8px" }}>
           {variants && variants.length > 0 ? (
-            <div className="flex flex-col items-end gap-1">
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               {variants.map((v, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs sm:text-sm">
-                  <span className="text-gray-500 font-medium">{v.name}:</span>
-                  <span className="text-brand font-bold">₹{v.price}</span>
+                <div
+                  key={i}
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-poppins), sans-serif",
+                      fontSize: "11px",
+                      color: "#687280",
+                    }}
+                  >
+                    {v.name}:
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-poppins), sans-serif",
+                      fontWeight: 700,
+                      fontSize: "13px",
+                      color: "#b71c1c",
+                    }}
+                  >
+                    ₹{v.price}
+                  </span>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-brand font-bold text-base sm:text-lg">₹{item.price ?? 0}</div>
+            <span
+              style={{
+                fontFamily: "var(--font-poppins), sans-serif",
+                fontWeight: 700,
+                fontSize: "16px",
+                color: "#b71c1c",
+              }}
+            >
+              ₹{item.price ?? 0}
+            </span>
           )}
         </div>
       </div>

@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
   subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "King of Burger - Digital Menu",
-  description: "Digital Menu for King of Burger Restaurant",
+  title: "King of Burgers - Digital Menu",
+  description: "Digital Menu for King of Burgers Restaurant",
 };
 
 export default function RootLayout({
@@ -25,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${playfair.variable} ${poppins.variable} antialiased`}
     >
       <body className="flex flex-col items-center justify-start bg-[#f0ebe1] min-h-screen">
         <main className="w-full max-w-md min-h-screen bg-bg-cream relative flex flex-col">
