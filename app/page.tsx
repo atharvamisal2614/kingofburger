@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import SearchBar from "../components/SearchBar";
 import CategoryNav from "../components/CategoryNav";
 import PromoCarousel from "../components/PromoCarousel";
 import MenuItem from "../components/MenuItem";
@@ -47,38 +48,37 @@ export default function Home() {
 
   return (
     <div className="flex flex-col flex-1 w-full relative">
-      {/* Header now includes the search bar */}
-      <Header
-        onMenuClick={() => setIsSidebarOpen(true)}
-        searchValue={searchQuery}
-        onSearchChange={(val) => {
-          setSearchQuery(val);
-          if (val.trim()) setActiveCategory(categories[0].name);
-        }}
-      />
+      <Header onMenuClick={() => setIsSidebarOpen(true)} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
       <div className="flex-1 bg-bg-cream flex flex-col pb-10 z-0 relative">
+        {/* 1. Carousel Card at the Top */}
+        <PromoCarousel />
 
-        {/* 1. Categories */}
+        {/* 2. Search Bar */}
+        <SearchBar value={searchQuery} onChange={(val) => {
+          setSearchQuery(val);
+          if (val.trim()) {
+            setActiveCategory(categories[0].name);
+          }
+        }} />
+
+        {/* 3. Categories Menu */}
         <CategoryNav
           categories={categories}
           activeCategory={activeCategory}
           onSelectCategory={(category) => {
             setActiveCategory(category);
-            setSearchQuery("");
+            setSearchQuery(""); // Clear search when a category is clicked
           }}
         />
 
-        {/* 2. Promo Carousel */}
-        <PromoCarousel />
-
-        {/* 3. Section Header */}
+        {/* 4. Section Header with minimal spacing */}
         <div style={{
           display: "flex",
           alignItems: "center",
           gap: "10px",
-          padding: "14px 20px 10px",
+          padding: "10px 20px 8px",
         }}>
           <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, transparent, #D4AF37)" }} />
           <h2 style={{
@@ -97,8 +97,8 @@ export default function Home() {
           <div style={{ flex: 1, height: "1px", background: "linear-gradient(to left, transparent, #D4AF37)" }} />
         </div>
 
-        {/* 4. Menu Items */}
-        <div style={{ paddingLeft: "16px", paddingRight: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+        {/* 5. Menu Items */}
+        <div style={{ paddingLeft: "16px", paddingRight: "16px", display: "flex", flexDirection: "column", gap: "10px" }}>
           {displayedItems.length > 0 ? (
             displayedItems.map((item) => (
               <MenuItem key={item.id} item={item} />

@@ -98,12 +98,12 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
 
   ],
   "Milkshake": [
-    { name: "Cold Coffee", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
-    { name: "Mango Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
-    { name: "Strawberry Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
-    { name: "Chocolate Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
-    { name: "Oreo Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
-    { name: "Butterscotch Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "Ice Cream", price: 100 }] },
+    { name: "Cold Coffee", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Mango Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Strawberry Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Chocolate Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Oreo Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
+    { name: "Butterscotch Shake", variants: [{name: "Half", price:50},{ name: "Regular", price: 80 }, { name: "With Ice Cream", price: 100 }] },
   ],
   "Bread Pizza": [
     { name: "Bread Pizza", price: 20 },
