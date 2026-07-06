@@ -66,6 +66,9 @@ export default function PromoCarousel() {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const startTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -74,8 +77,8 @@ export default function PromoCarousel() {
       setTimeout(() => {
         setCurrent((c) => (c + 1) % slides.length);
         setIsTransitioning(false);
-      }, 320);
-    }, 3800);
+      }, 600); // 600ms transition (increased by 280ms for smoother slow transition)
+    }, 4800); // Autoplay interval increased to 4.8 seconds (by 1 second)
   }, []);
 
   const stopTimer = useCallback(() => {
@@ -94,8 +97,35 @@ export default function PromoCarousel() {
     setTimeout(() => {
       setCurrent(index);
       setIsTransitioning(false);
-    }, 320);
-    setTimeout(startTimer, 360);
+    }, 600); // 600ms transition
+    setTimeout(startTimer, 650);
+  };
+
+  // Touch Swipe Handlers for Swiping Gesture
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = e.targetTouches[0].clientX;
+    stopTimer();
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 50) {
+      // Swipe Left -> Next Slide
+      const next = (current + 1) % slides.length;
+      handleDot(next);
+    } else if (diff < -50) {
+      // Swipe Right -> Prev Slide
+      const prev = (current - 1 + slides.length) % slides.length;
+      handleDot(prev);
+    } else {
+      // Small or no movement, restart autoplay
+      startTimer();
+    }
   };
 
   const slide = slides[current];
@@ -113,6 +143,9 @@ export default function PromoCarousel() {
         }}
         onMouseEnter={stopTimer}
         onMouseLeave={startTimer}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Image — slightly smaller, flush to right edge */}
         <img
@@ -130,7 +163,7 @@ export default function PromoCarousel() {
             display: "block",
             opacity: isTransitioning ? 0 : 1,
             transform: isTransitioning ? "scale(1.02)" : "scale(1)",
-            transition: "opacity 0.35s ease, transform 0.35s ease",
+            transition: "opacity 0.6s ease, transform 0.6s ease",
             zIndex: 0,
           }}
           onError={(e) => {
@@ -163,7 +196,7 @@ export default function PromoCarousel() {
             maxWidth: "55%",
             opacity: isTransitioning ? 0 : 1,
             transform: isTransitioning ? "translateY(5px)" : "translateY(0)",
-            transition: "opacity 0.32s ease, transform 0.32s ease",
+            transition: "opacity 0.6s ease, transform 0.6s ease",
           }}
         >
           {/* Title */}

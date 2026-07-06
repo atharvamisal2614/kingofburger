@@ -76,6 +76,7 @@ const exactDishes: Record<string, { name: string, price?: number, variants?: Men
     { name: "Chocolate Grilled Sandwich", price: 80 },
     { name: "Veg Cheese Grilled Sandwich", price: 100 },
     { name: "Plain Cheese Grilled Sandwich", price: 100 },
+    { name: "Veg Schezwan Cheese Grilled Sandwich", price: 110 },
     { name: "Chocolate Cheese Grilled Sandwich", price: 110 },
     { name: "Veg Paneer Cheese Grilled Sandwich", price: 130 },
     { name: "Veg Pizza Cheese Grilled Sandwich", price: 130 },
@@ -153,6 +154,7 @@ const dishDescriptions: Record<string, string> = {
   "Chocolate Cheese Grilled Sandwich": "Indulgent combination of chocolate and cheese.",
   "Veg Paneer Cheese Grilled Sandwich": "Stuffed with spiced paneer and cheese.",
   "Veg Pizza Cheese Grilled Sandwich": "Filled with pizza sauce and mozzarella cheese.",
+  "Veg Schezwan Cheese Grilled Sandwich": "Delicious sandwich with rain of cheese with spicy schezwan sauce.",
 
   // French Fries
   "Salted Fries": "Golden potato fries seasoned with sea salt.",

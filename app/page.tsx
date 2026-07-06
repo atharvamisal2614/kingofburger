@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,7 +38,9 @@ export default function Home() {
             <span className="text-2xl sm:text-3xl md:text-4xl lowercase italic text-gold mb-1 sm:mb-2 animate-fade-up-2">of</span>
             <span className="text-5xl sm:text-6xl md:text-7xl uppercase animate-fade-up-3">Burgers</span>
           </div>
-          <p className="animate-fade-up-4 mt-3 text-xs sm:text-sm tracking-[0.25em] uppercase text-gold font-medium" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
+        </div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center animate-fade-up-4">
+          <p className="text-xs font-normal" style={{ fontFamily: "var(--font-poppins), sans-serif", color: "#000000" }}>
             Estd. 2021
           </p>
         </div>
