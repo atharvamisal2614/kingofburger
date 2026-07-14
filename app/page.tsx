@@ -38,11 +38,11 @@ export default function Home() {
             <span className="text-2xl sm:text-3xl md:text-4xl lowercase italic text-gold mb-1 sm:mb-2 animate-fade-up-2">of</span>
             <span className="text-5xl sm:text-6xl md:text-7xl uppercase animate-fade-up-3">Burgers</span>
           </div>
-        </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center animate-fade-up-4">
-          <p className="text-xs font-normal" style={{ fontFamily: "var(--font-poppins), sans-serif", color: "#000000" }}>
-            Estd. 2021
-          </p>
+          <div className="animate-fade-up-4 mt-6">
+            <p className="text-xs font-normal" style={{ fontFamily: "var(--font-poppins), sans-serif", color: "#000000" }}>
+              Estd. 2021
+            </p>
+          </div>
         </div>
       </div>
     );
